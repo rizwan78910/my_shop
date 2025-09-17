@@ -32,13 +32,15 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'ecommerce_project.urls'
 
 import os
+from pathlib import Path
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'shop' / 'templates'],  # add this
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR / 'templates'],  # optional, if you have a project-level templates folder
+        'APP_DIRS': True,  # important for app-level templates
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -77,3 +79,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Redirect after login
+LOGIN_REDIRECT_URL = 'product_list'
+
+# Redirect after logout (optional, to go back to login page)
+LOGOUT_REDIRECT_URL = 'login'
+
+# settings.py
+CART_SESSION_ID = 'cart'

@@ -1,3 +1,2 @@
 Django==5.2.6
-Pillow==9.5.0
-setuptools<68
+Pillow==10.1.0

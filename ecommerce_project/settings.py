@@ -7,7 +7,15 @@ SECRET_KEY = 'dev-secret-key-for-local-use-only'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "https://localhost:8000",
+    "http://127.0.0.1:8000",
+    "https://127.0.0.1:8000",
+]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -31,16 +39,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ecommerce_project.urls'
 
-import os
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # optional, if you have a project-level templates folder
-        'APP_DIRS': True,  # important for app-level templates
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -51,8 +54,6 @@ TEMPLATES = [
         },
     },
 ]
-
-
 
 WSGI_APPLICATION = 'ecommerce_project.wsgi.application'
 
@@ -70,21 +71,20 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-
+# Static files
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'shop' / 'static']
 
-
+# Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Redirect after login
+# Redirects
 LOGIN_REDIRECT_URL = 'product_list'
-
-# Redirect after logout (optional, to go back to login page)
 LOGOUT_REDIRECT_URL = 'login'
 
-# settings.py
+# Cart settings
 CART_SESSION_ID = 'cart'

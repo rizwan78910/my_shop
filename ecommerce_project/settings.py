@@ -7,7 +7,7 @@ SECRET_KEY = 'dev-secret-key-for-local-use-only'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["my-shop-3-qhz0.onrender.com"]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",

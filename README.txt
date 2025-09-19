@@ -1,3 +1,6 @@
+username = rizwan
+password = 1234
+
 Ready-to-run Django e-commerce PoC (minimal)
 
 Steps to run:
